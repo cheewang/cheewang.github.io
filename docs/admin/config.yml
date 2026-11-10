@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://qifan.wang
+logo_url: https://qifan.wang/img/avatar.png
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "post"
+    label: "文章"
+    folder: "content/post"
+    create: true
+    slug: "{{slug}}/index"
+    path: "{{slug}}/index"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: true
+    fields:
+      - { label: "标题", name: "title", widget: "string", required: true }
+      - { label: "发布日期", name: "date", widget: "datetime", required: true }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false, required: false }
+      - label: "标签"
+        name: "tags"
+        widget: "list"
+        required: false
+        field: { label: "标签", name: "tag", widget: "string" }
+      - label: "分类"
+        name: "categories"
+        widget: "list"
+        required: false
+        field: { label: "分类", name: "category", widget: "string" }
+      - { label: "正文", name: "body", widget: "markdown", required: true }
+  - name: "pages"
+    label: "页面"
+    editor:
+      preview: true
+    files:
+      - label: "关于页"
+        name: "about"
+        file: "content/page/about/index.md"
+        fields:
+          - { label: "标题", name: "title", widget: "string" }
+          - { label: "正文", name: "body", widget: "markdown" }
+  - name: "settings"
+    label: "设置"
+    editor:
+      preview: false
+    files:
+      - label: "站点配置"
+        name: "hugo"
+        file: "hugo.toml"
+        fields:
+          - { label: "站点标题", name: "title", widget: "string" }
+          - { label: "描述", name: "description", widget: "text", required: false }
