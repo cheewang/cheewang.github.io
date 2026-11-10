@@ -1,0 +1,48 @@
+name: Debug Hugo build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.140.0"
+          extended: true
+
+      - name: Prepare theme (hugo-theme-stack v3.34.2)
+        run: |
+          curl -sSL -o /tmp/theme.zip "https://proxy.golang.org/github.com/!cai!jimmy/hugo-theme-stack/v3/@v/v3.34.2.zip"
+          mkdir -p /tmp/theme themes
+          unzip -q /tmp/theme.zip -d /tmp/theme
+          cp -r "/tmp/theme/github.com/CaiJimmy/hugo-theme-stack/v3@v3.34.2" themes/hugo-theme-stack
+          ls themes/hugo-theme-stack
+
+      - name: Run hugo and capture log
+        run: |
+          set +e
+          hugo --minify > build.log 2>&1
+          code=$?
+          set -e
+          echo "HUGO_EXIT=$code" >> build.log
+          echo "--- build.log ---"
+          cat build.log
+          echo "exit=$code"
+          if [ "$code" != "0" ]; then exit 0; fi
+
+      - name: Commit build.log back to repo
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add -f build.log
+          git commit -m "ci: debug build.log [skip]" || echo "no change"
+          git push origin main || echo "push failed"
