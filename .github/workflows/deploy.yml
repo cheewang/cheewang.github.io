@@ -1,0 +1,45 @@
+name: Deploy Hugo site to docs
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.140.0"
+          extended: true
+
+      - name: Prepare theme (hugo-theme-stack v3.34.2)
+        run: |
+          curl -sSL -o /tmp/theme.zip "https://proxy.golang.org/github.com/!cai!jimmy/hugo-theme-stack/v3/@v/v3.34.2.zip"
+          mkdir -p /tmp/theme themes
+          unzip -q /tmp/theme.zip -d /tmp/theme
+          cp -r "/tmp/theme/github.com/CaiJimmy/hugo-theme-stack/v3@v3.34.2" themes/hugo-theme-stack
+
+      - name: Build Hugo site
+        run: hugo --minify
+
+      - name: Publish build output to docs/
+        run: |
+          rm -rf docs
+          cp -r public docs
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add -A docs
+          git commit -m "docs: publish hugo site [ci skip]" || echo "no-change"
+          git push origin main || echo "push-failed"
