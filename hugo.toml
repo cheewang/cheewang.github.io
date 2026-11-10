@@ -1,36 +1,29 @@
 baseURL = "https://qifan.wang/"
 languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
 title = "琦凡的博客"
-theme = "hugo-theme-stack/v5"
-pygmentsUseClasses = true
+theme = "hugo-theme-stack"
+hasCJKLanguage = true
 
 [params]
-  mainSections = ["post"]
-  description = "个人知识沉淀"
-  enableEmoji = true
-  summaryLength = 100
+    mainSections = ["post"]
+    description = "个人知识沉淀"
+    summaryLength = 100
 
-  [params.sidebar]
-    emoji = "📚"
-    subtitle = "记录与沉淀"
-    description = "技术笔记、工作复盘、生活随记"
+    [params.sidebar]
+        emoji = "📚"
+        subtitle = "记录与沉淀"
+        description = "技术笔记、工作复盘、生活随记"
 
-  [params.article]
-    readingTime = true
-    license = ""
+    [params.article]
+        readingTime = true
 
-  [params.footer]
-    since = 2026
-
-  appearance = "auto"
+    [params.footer]
+        since = 2026
 
 [markup]
   [markup.goldmark]
     renderer = { unsafe = true }
-
-[frontmatter]
-  date = ["date", ":default"]
-  lastmod = [":fileModTime", ":default"]
 
 [outputs]
   home = ["HTML", "RSS"]
@@ -40,3 +33,7 @@ pygmentsUseClasses = true
 [taxonomies]
   category = "categories"
   tag = "tags"
+
+[frontmatter]
+  date = ["date", ":default"]
+  lastmod = [":fileModTime", ":default"]
