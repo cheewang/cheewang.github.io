@@ -28,7 +28,8 @@ hasCJKLanguage = true
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML"]
-  taxonomies = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
 
 [taxonomies]
   category = "categories"
