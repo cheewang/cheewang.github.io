@@ -1,11 +1,16 @@
-WARN  Unknown kind "taxonomies" in outputs configuration.
 Start building sites … 
 hugo v0.140.0-3f35721fb2c75a1f7cc5a7a14400b66e73d4b06e+extended linux/amd64 BuildDate=2024-12-17T14:20:55Z VendorInfo=gohugoio
 
-ERROR render of "/404" failed: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/_default/baseof.html:4:12": execute of template failed: template: 404.html:4:12: executing "404.html" at <partial "head/head.html" .>: error calling partial: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/partials/head/head.html:25:4": execute of template failed: template: partials/head/head.html:25:4: executing "partials/head/head.html" at <partial "google_analytics.html" .>: error calling partial: partial "google_analytics.html" not found
-ERROR render of "/categories" failed: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/_default/baseof.html:4:12": execute of template failed: template: _default/list.html:4:12: executing "_default/list.html" at <partial "head/head.html" .>: error calling partial: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/partials/head/head.html:25:4": execute of template failed: template: partials/head/head.html:25:4: executing "partials/head/head.html" at <partial "google_analytics.html" .>: error calling partial: partial "google_analytics.html" not found
-ERROR render of "/categories/生活" failed: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/_default/baseof.html:4:12": execute of template failed: template: _default/list.html:4:12: executing "_default/list.html" at <partial "head/head.html" .>: error calling partial: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/partials/head/head.html:25:4": execute of template failed: template: partials/head/head.html:25:4: executing "partials/head/head.html" at <partial "google_analytics.html" .>: error calling partial: partial "google_analytics.html" not found
-ERROR render of "/post" failed: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/_default/baseof.html:4:12": execute of template failed: template: _default/list.html:4:12: executing "_default/list.html" at <partial "head/head.html" .>: error calling partial: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/partials/head/head.html:25:4": execute of template failed: template: partials/head/head.html:25:4: executing "partials/head/head.html" at <partial "google_analytics.html" .>: error calling partial: partial "google_analytics.html" not found
-Total in 39 ms
-Error: error building site: render: failed to render pages: render of "/" failed: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/_default/baseof.html:4:12": execute of template failed: template: index.html:4:12: executing "index.html" at <partial "head/head.html" .>: error calling partial: "/home/runner/work/cheewang.github.io/cheewang.github.io/themes/hugo-theme-stack/layouts/partials/head/head.html:25:4": execute of template failed: template: partials/head/head.html:25:4: executing "partials/head/head.html" at <partial "google_analytics.html" .>: error calling partial: partial "google_analytics.html" not found
-HUGO_EXIT=1
+
+                   | ZH-CN  
+-------------------+--------
+  Pages            |    14  
+  Paginator pages  |     0  
+  Non-page files   |     0  
+  Static files     |     0  
+  Processed images |     1  
+  Aliases          |     6  
+  Cleaned          |     0  
+
+Total in 68 ms
+HUGO_EXIT=0
