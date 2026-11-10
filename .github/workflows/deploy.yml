@@ -20,15 +20,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: true
-          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.140.0"
           extended: true
+
+      - name: Prepare theme (hugo-theme-stack v3.34.2)
+        run: |
+          curl -sSL -o /tmp/theme.zip "https://proxy.golang.org/github.com/!cai!jimmy/hugo-theme-stack/v3/@v/v3.34.2.zip"
+          mkdir -p /tmp/theme themes
+          unzip -q /tmp/theme.zip -d /tmp/theme
+          cp -r "/tmp/theme/github.com/CaiJimmy/hugo-theme-stack/v3@v3.34.2" themes/hugo-theme-stack
+          ls themes/hugo-theme-stack
 
       - name: Build
         run: hugo --minify
