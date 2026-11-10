@@ -1,0 +1,6 @@
+[build]
+  command = "curl -sSL -o /tmp/theme.zip https://proxy.golang.org/github.com/!cai!jimmy/hugo-theme-stack/v3/@v/v3.34.2.zip && unzip -q /tmp/theme.zip -d /tmp/theme && mkdir -p themes && cp -r /tmp/theme/github.com/CaiJimmy/hugo-theme-stack/v3@v3.34.2 themes/hugo-theme-stack && hugo --minify"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.140.0"
